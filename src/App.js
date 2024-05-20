@@ -1,5 +1,10 @@
+import React from 'react'
+import {ReactComponent as MySVG} from './OwlLogo.svg'
+
 export default function App() {
-
-  return <p>initial commit</p>
-
+  return (
+    <div>
+      <MySVG/>
+    </div>
+  )
 }
