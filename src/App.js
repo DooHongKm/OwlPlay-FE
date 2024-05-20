@@ -1,10 +1,12 @@
 import React from 'react'
-import {ReactComponent as MySVG} from './OwlLogo.svg'
+import Logo from './pages/Logo'
+import Header from './features/Header'
 
 export default function App() {
   return (
     <div>
-      <MySVG/>
+      {/* <Logo/> 테스트 통과 */}
+      {/* <Header/> 테스트 통과 */}
     </div>
   )
 }
