@@ -1,6 +1,7 @@
 import React from 'react'
+import './TestOption.css'
 
-export default function Test() {
+export default function TestOption() {
   return (
     <div>
       

@@ -1,6 +1,7 @@
 import React from 'react'
+import './SignupSuccess.css'
 
-export default function TestOption8() {
+export default function SignupSuccess() {
   return (
     <div>
       

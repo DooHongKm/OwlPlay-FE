@@ -1,7 +1,8 @@
 import React from 'react'
-import Logo from './pages/Logo'
-import Login from './pages/Login'
-import LoginSuccess from './pages/LoginSuccess'
+import Logo from './pages/Logo/Logo'
+import Login from './pages/Login/Login'
+import LoginSuccess from './pages/LoginSuccess/LoginSuccess'
+import Signup from './pages/Signup/Signup'
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       {/* <Logo/> 레이아웃 완료 */}
       {/* <Login/> 레이아웃 완료 */}
       {/* <LoginSuccess/> 레이아웃 완료 */}
+      <Signup/>
     </div>
   )
 }

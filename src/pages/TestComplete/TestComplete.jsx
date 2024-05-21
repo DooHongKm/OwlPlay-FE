@@ -1,6 +1,7 @@
 import React from 'react'
+import './TestComplete.css'
 
-export default function TestOption6() {
+export default function TestComplete() {
   return (
     <div>
       

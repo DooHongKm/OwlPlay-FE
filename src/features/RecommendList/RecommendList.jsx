@@ -1,6 +1,7 @@
 import React from 'react'
+import './RecommendList.css'
 
-export default function Main() {
+export default function RecommendList() {
   return (
     <div>
       

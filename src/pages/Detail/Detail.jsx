@@ -1,6 +1,7 @@
 import React from 'react'
+import './Detail.css'
 
-export default function TestOption3() {
+export default function Detail() {
   return (
     <div>
       

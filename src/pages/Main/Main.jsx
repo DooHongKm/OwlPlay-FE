@@ -1,6 +1,7 @@
 import React from 'react'
+import './Main.css'
 
-export default function MovieCard() {
+export default function Main() {
   return (
     <div>
       

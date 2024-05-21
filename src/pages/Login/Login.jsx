@@ -1,5 +1,6 @@
 import React from 'react'
-import OwlLogo from '../OwlLogo.svg'
+import './Login.css'
+import OwlLogo from '../../OwlLogo.svg'
 
 export default function Login() {
   return (

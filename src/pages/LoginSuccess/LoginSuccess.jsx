@@ -1,5 +1,6 @@
 import React from 'react'
-import Owl from '../Owl.svg'
+import './LoginSuccess.css'
+import Owl from '../../Owl.svg'
 
 export default function LoginSuccess() {
   return (
