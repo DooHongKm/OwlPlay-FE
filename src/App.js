@@ -8,6 +8,7 @@ import Test from './pages/Test/Test'
 import TestComplete from './pages/TestComplete/TestComplete'
 import Main from './pages/Main/Main'
 import Detail from './pages/Detail/Detail'
+import Preparing from './pages/Preparing/Preparing'
 
 export default function App() {
   return (
@@ -19,7 +20,9 @@ export default function App() {
       {/* <SignupSuccess/> 레이아웃 완료 */}
       {/* <Test/> 레이아웃 완료 */}
       {/* <TestComplete/> 레이아웃 완료 */}
-      <Main/>
+      {/* <Main/> 레이아웃 완료 */}
+      <Detail/>
+      <Preparing/>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import OwlLogo from '../OwlLogo.svg'
+import OwlLogo from '../../OwlLogo.svg'
 
 export default function Header() {
   return (
