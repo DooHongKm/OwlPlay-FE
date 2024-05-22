@@ -22,7 +22,7 @@ export default function App() {
       {/* <TestComplete/> 레이아웃 완료 */}
       {/* <Main/> 레이아웃 완료 */}
       <Detail/>
-      <Preparing/>
+      {/* <Preparing/> 레이아웃 완료 */}
     </div>
   )
 }
