@@ -5,6 +5,9 @@ import LoginSuccess from './pages/LoginSuccess/LoginSuccess'
 import Signup from './pages/Signup/Signup'
 import SignupSuccess from './pages/SignupSuccess/SignupSuccess'
 import Test from './pages/Test/Test'
+import TestComplete from './pages/TestComplete/TestComplete'
+import Main from './pages/Main/Main'
+import Detail from './pages/Detail/Detail'
 
 export default function App() {
   return (
@@ -15,7 +18,8 @@ export default function App() {
       {/* <Signup/> 레이아웃 완료 */}
       {/* <SignupSuccess/> 레이아웃 완료 */}
       {/* <Test/> 레이아웃 완료 */}
-      
+      {/* <TestComplete/> 레이아웃 완료 */}
+      <Main/>
     </div>
   )
 }
