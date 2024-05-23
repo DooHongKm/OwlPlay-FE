@@ -10,9 +10,14 @@ button {
   cursor: pointer;
 }
 
-.single-page {
+.app-container {
   width: 100%;
   height: 908px;
+}
+
+.switch-container {
+  width: 100%;
+  height: 100%;
 }
 
 .empty-space {

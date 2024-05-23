@@ -61,7 +61,7 @@
   color: rgb(180, 180, 180);
   margin: 0;
   padding-top: 5px;
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 
 .login-button {
@@ -79,4 +79,16 @@
   letter-spacing: 5px;
   color: white;
   background-color: rgb(140, 80, 80);
+}
+
+.login-button > button:hover {
+  background-color: rgb(150, 100, 100);
+}
+
+.id-error {
+  visibility: visible;
+}
+
+.pw-error {
+  visibility: visible;
 }

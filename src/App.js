@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Logo from './pages/Logo/Logo'
 import Login from './pages/Login/Login'
 import LoginSuccess from './pages/LoginSuccess/LoginSuccess'
@@ -12,17 +12,10 @@ import Preparing from './pages/Preparing/Preparing'
 
 export default function App() {
   return (
-    <div className='single-page'>
-      {/* <Logo/> 레이아웃 완료 */}
-      {/* <Login/> 레이아웃 완료 */}
-      {/* <LoginSuccess/> 레이아웃 완료 */}
-      {/* <Signup/> 레이아웃 완료 */}
-      {/* <SignupSuccess/> 레이아웃 완료 */}
-      {/* <Test/> 레이아웃 완료 */}
-      {/* <TestComplete/> 레이아웃 완료 */}
-      {/* <Main/> 레이아웃 완료 */}
-      {/* <Detail/> 레이아웃 완료 */}
-      {/* <Preparing/> 레이아웃 완료 */}
+    <div className='app-container'>
+      {/* {showLogo ? <Logo/> : <Login/>} */}
+      {/* {signupRequest ? <Signup/> : <Login setSignupRequest={setSignupRequest}/>} */}
+      <Logo/>
     </div>
   )
 }
