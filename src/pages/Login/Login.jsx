@@ -33,8 +33,8 @@ export default function Login() {
         },
         body: JSON.stringify({ id, pw }),
       });
-      // const data = await response.json();
-      const data = {"message": 'pass'}
+      const data = await response.json();   // 실제 실행용
+      // const data = {"message": 'pass'};  // 테스트용
       if (data.message === 'pass') {
         setLoginSuccess(true);
       } else if (data.message === 'id-error') {
@@ -58,28 +58,30 @@ export default function Login() {
               <img src={OwlLogo} alt='OwlLogo'/>
             </div>
             <span/>
-            <div className='login-input'>
-              <input 
-                type='text'
-                placeholder='ID'
-                value={id}
-                onChange={(e) => setId(e.target.value)}
-              />
-              <p className={idError ? 'id-error' : ''}>존재하지 않는 아이디입니다.</p>
-            </div>
-            <div className='login-input'>
-              <input 
-                type='password'
-                placeholder='PW'
-                value={pw}
-                onChange={(e) => setPw(e.target.value)}
-              />
-              <p className={pwError ? 'pw-error' : ''}>잘못된 비밀번호입니다.</p>
-            </div>
-            <div className='login-button'>
-              <button type='submit'>로그인</button>
-              <button onClick={() => setSignupRequest(true)}>회원가입</button>
-            </div>
+            <form onSubmit={sendLoginInfo}>
+              <div className='login-input'>
+                <input 
+                  type='text'
+                  placeholder='ID'
+                  value={id}
+                  onChange={(e) => setId(e.target.value)}
+                />
+                <p className={idError ? 'login-input-text-error' : 'login-input-text'}>존재하지 않는 아이디입니다.</p>
+              </div>
+              <div className='login-input'>
+                <input 
+                  type='password'
+                  placeholder='PW'
+                  value={pw}
+                  onChange={(e) => setPw(e.target.value)}
+                />
+                <p className={pwError ? 'login-input-text-error' : 'login-input-text'}>잘못된 비밀번호입니다.</p>
+              </div>
+              <div className='login-button'>
+                <button type='submit'>로그인</button>
+                <button onClick={() => setSignupRequest(true)}>회원가입</button>
+              </div>
+            </form>
           </div>
         </div>
       )}

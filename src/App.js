@@ -15,7 +15,7 @@ export default function App() {
     <div className='app-container'>
       {/* {showLogo ? <Logo/> : <Login/>} */}
       {/* {signupRequest ? <Signup/> : <Login setSignupRequest={setSignupRequest}/>} */}
-      <Logo/>
+      <Login/>
     </div>
   )
 }
