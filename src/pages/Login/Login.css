@@ -89,11 +89,11 @@
   height: 60px;
   border: none;
   border-radius: 10px;
-  font-family: 'GmarketMedium';
+  font-family: 'Batang';
   font-size: 22px;
+  font-weight: bold;
   letter-spacing: 5px;
-  line-height: 60px;
-  padding-left: 12px;
+  padding-left: 15px;
   color: white;
   background-color: rgb(140, 80, 80);
 }

@@ -13,9 +13,7 @@ import Preparing from './pages/Preparing/Preparing'
 export default function App() {
   return (
     <div className='app-container'>
-      {/* {showLogo ? <Logo/> : <Login/>} */}
-      {/* {signupRequest ? <Signup/> : <Login setSignupRequest={setSignupRequest}/>} */}
-      <Login/>
+      <Logo/>
     </div>
   )
 }

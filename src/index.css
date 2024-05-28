@@ -1,16 +1,11 @@
 @font-face {
   font-family: "GmarketMedium";
-  src: url('./GmarketMedium.TTF') format('truetype');
+  src: url('./fonts/GmarketMedium.TTF') format('truetype');
 }
 
 @font-face {
-  font-family: "GmarketBold";
-  src: url('./GmarketBold.TTF') format('truetype');
-}
-
-@font-face {
-  font-family: "GmarketLight";
-  src: url('./GmarketLight.TTF') format('truetype');
+  font-family: "Batang";
+  src: url('./fonts/Batang.TTF') format('truetype');
 }
 
 body {

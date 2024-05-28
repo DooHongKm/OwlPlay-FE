@@ -1,6 +1,6 @@
 import React from 'react'
 import './OptionCard.css'
-import Poster from '../../Poster.svg'
+import Poster from '../../images/Poster.svg'
 
 export default function OptionCard() {
   return (

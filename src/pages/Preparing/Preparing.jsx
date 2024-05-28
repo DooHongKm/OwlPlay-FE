@@ -1,6 +1,6 @@
 import React from 'react'
 import './Preparing.css'
-import Owl from '../../Owl.svg'
+import Owl from '../../images/Owl.svg'
 import Header from '../../features/Header/Header'
 
 

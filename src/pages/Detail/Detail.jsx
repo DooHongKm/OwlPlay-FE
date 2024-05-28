@@ -1,7 +1,7 @@
 import React from 'react'
 import './Detail.css'
 import Header from '../../features/Header/Header'
-import Poster from '../../Poster.svg'
+import Poster from '../../images/Poster.svg'
 
 export default function Detail() {
   return (

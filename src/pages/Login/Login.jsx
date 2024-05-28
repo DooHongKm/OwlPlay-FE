@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './Login.css'
-import OwlLogo from '../../OwlLogo.svg'
+import OwlLogo from '../../images/OwlLogo.svg'
 import Signup from '../Signup/Signup';
 import LoginSuccess from '../LoginSuccess/LoginSuccess';
 
@@ -33,8 +33,8 @@ export default function Login() {
         },
         body: JSON.stringify({ id, pw }),
       });
-      const data = await response.json();   // 실제 실행용
-      // const data = {"message": 'pass'};  // 테스트용
+      // const data = await response.json();   // 실제 실행용
+      const data = {"message": 'pass'};   // 테스트용
       if (data.message === 'pass') {
         setLoginSuccess(true);
       } else if (data.message === 'id-error') {
