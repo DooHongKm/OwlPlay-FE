@@ -8,10 +8,9 @@
 .optioncard-container > button {
   width: 250px;
   height: 150px;
-  background-image: url('../../images/Poster.svg');
   background-size: 250px 150px;
   border: 1px solid white;
-  opacity: 70%;
+  opacity: 80%;
   border-radius: 10px;
   box-sizing: border-box;
   color: white;

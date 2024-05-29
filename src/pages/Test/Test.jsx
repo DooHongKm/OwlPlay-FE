@@ -1,16 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Test.css'
-import TestOption4 from '../../features/TestOption/TestOption4'
-import TestOption6 from '../../features/TestOption/TestOption6'
-import TestOption8 from '../../features/TestOption/TestOption8'
+import questions from '../../questions/questions.json'
+import TestOption from '../../features/TestOption/TestOption'
+import TestComplete from '../TestComplete/TestComplete'
 
 export default function Test() {
+  
+  // 몇 번째 질문인지 카운트하는 state
+  const [currentNum, setCurrentNum] = useState(0);
+
+  // 사용자가 선택한 선택지를 저장
+  const [testResult, setTestResult] = useState({});
+
+  // currentNum을 1 증가시키고 선택지 정보를 받아오는 함수
+  const nextPage = (key, value) => {
+    setTestResult((res) => ({
+      ...res,
+      [key]: value
+    }));
+    setCurrentNum((currentNum) => currentNum + 1);
+  }
+
   return (
     <div className='test-container'>
-      <div className='test-box'>
-        <p>Q. 가장 좋아하는 장르의 영화를 고르세요.</p>
-        <TestOption8/>
-      </div>
+      {currentNum >= questions.length ? <TestComplete userData={testResult}/> :
+        <div className='test-box'>
+          <p>{questions[currentNum].question}</p>
+          <TestOption num={currentNum} data={questions[currentNum]} nextPage={nextPage}/>
+        </div>
+      }
     </div>
   )
 }

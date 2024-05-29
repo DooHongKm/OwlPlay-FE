@@ -3,7 +3,7 @@ import './Main.css'
 import Header from '../../features/Header/Header'
 import RecommendList from '../../features/RecommendList/RecommendList'
 
-export default function Main() {
+export default function Main({ userData }) {
   return (
     <div className='main-container'>
       <Header/>

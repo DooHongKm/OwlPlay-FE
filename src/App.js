@@ -13,7 +13,7 @@ import Preparing from './pages/Preparing/Preparing'
 export default function App() {
   return (
     <div className='app-container'>
-      <Logo/>
+      <Test/>
     </div>
   )
 }

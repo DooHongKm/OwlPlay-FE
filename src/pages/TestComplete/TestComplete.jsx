@@ -3,7 +3,7 @@ import './TestComplete.css'
 import Owl from '../../images/Owl.svg'
 import Main from '../Main/Main';
 
-export default function TestComplete() {
+export default function TestComplete({ userData }) {
 
   // 2초 후 메인 페이지로 이동
   const [showComplete, setShowComplete] = useState(true);
@@ -24,7 +24,7 @@ export default function TestComplete() {
             <p>성향 조사를 완료하여<br/>메인 추천 페이지로 이동합니다</p>
           </div>
         </div>
-      : <Main/>}
+      : <Main userData={userData}/>}
     </div>
   )
 }
