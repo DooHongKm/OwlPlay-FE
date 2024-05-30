@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Test.css'
-import questions from '../../questions/questions.json'
+import questions from '../../datas/questions.json'
 import TestOption from '../../features/TestOption/TestOption'
 import TestComplete from '../TestComplete/TestComplete'
 

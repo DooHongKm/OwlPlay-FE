@@ -3,7 +3,7 @@ import './Detail.css'
 import Header from '../../features/Header/Header'
 import Poster from '../../images/Poster.svg'
 
-export default function Detail() {
+export default function Detail({ title }) {
   return (
     <div className='detail-container'>
       <Header/>
@@ -30,7 +30,7 @@ export default function Detail() {
             <button>바로가기</button>
           </div>
           <div className='detail-link'>
-            <p>Coupangplay</p>
+            <p>CoupangPlay</p>
             <button>바로가기</button>
           </div>
         </div>

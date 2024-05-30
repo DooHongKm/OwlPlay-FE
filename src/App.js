@@ -10,10 +10,14 @@ import Main from './pages/Main/Main'
 import Detail from './pages/Detail/Detail'
 import Preparing from './pages/Preparing/Preparing'
 
+// Detail 구현해서 Main과 연결
+// TestComplete에서 userData를 input으로 API 통신을 하여 output을 Main으로 전달
+// 헤더 버튼과 페이지 연결, 검색 API
+
 export default function App() {
   return (
     <div className='app-container'>
-      <Test/>
+      <TestComplete/>
     </div>
   )
 }
