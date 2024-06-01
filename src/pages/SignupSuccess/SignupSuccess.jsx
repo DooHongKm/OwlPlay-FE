@@ -3,11 +3,10 @@ import './SignupSuccess.css'
 import Owl from '../../images/Owl.svg'
 import Test from '../Test/Test'
 
-export default function SignupSuccess() {
+export default function SignupSuccess({ id }) {
 
   // 2초 후 메인 페이지로 이동
   const [showSuccess, setShowSuccess] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSuccess(false);
@@ -24,7 +23,7 @@ export default function SignupSuccess() {
             <p>회원가입에 성공하여<br/>성향 조사 페이지로 이동합니다</p>
           </div>
         </div>
-      : <Test/>}
+      : <Test id={id}/>}
     </div>
   )
 }

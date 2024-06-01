@@ -3,11 +3,10 @@ import './Logo.css'
 import {ReactComponent as OwlLogo} from '../../images/OwlLogo.svg'
 import Login from '../Login/Login';
 
-export default function Logo() {
+export default function Logo({ setUserId }) {
 
   // 3초 후 Login Page로 이동
   const [showLogo, setShowLogo] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLogo(false);
@@ -21,7 +20,7 @@ export default function Logo() {
         <div className='logo-container'>
           <OwlLogo/>
         </div>
-      : <Login/>}
+      : <Login setUserId={setUserId}/>}
     </div>
   )
 }

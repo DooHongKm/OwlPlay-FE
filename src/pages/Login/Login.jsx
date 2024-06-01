@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Login.css'
 import OwlLogo from '../../images/OwlLogo.svg'
 import Signup from '../Signup/Signup';
 import LoginSuccess from '../LoginSuccess/LoginSuccess';
 
-export default function Login() {
+export default function Login({ setUserId }) {
 
   // 전달할 id, pw 정보
   const [id, setId] = useState('');
@@ -20,10 +20,11 @@ export default function Login() {
   // 로그인 성공 -> 로그인 성공 페이지로 이동
   const [loginSuccess, setLoginSuccess] = useState(false);
 
+  // 로그인 정보를 보내고 P/F를 받아오는 함수
   const sendLoginInfo = async (event) => {
     event.preventDefault();   // 페이지 새로고침 방지
     try {
-      // API 엔드포인트 : /api/login
+      // endpoint : /api/login
       // request : {"id": '~~~', "pw": '~~~'}
       // response : {"message": '~~~'}
       const response = await fetch('/api/login', {
@@ -49,9 +50,15 @@ export default function Login() {
     }
   };
 
+  useEffect(() => {
+    if (loginSuccess) {
+      setUserId(id);
+    }
+  }, [id, setUserId, loginSuccess])
+
   return (
     <div className='switch-container'>
-      {signupRequest ? <Signup/> : (loginSuccess ? <LoginSuccess/> :
+      {signupRequest ? <Signup setUserId={setUserId}/> : (loginSuccess ? <LoginSuccess/> :
         <div className='login-container'>
           <div className='login-box'>
             <div className='login-logo'>
@@ -86,7 +93,5 @@ export default function Login() {
         </div>
       )}
     </div>
-
-    
   )
 }

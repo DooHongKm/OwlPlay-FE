@@ -4,9 +4,9 @@ import questions from '../../datas/questions.json'
 import TestOption from '../../features/TestOption/TestOption'
 import TestComplete from '../TestComplete/TestComplete'
 
-export default function Test() {
+export default function Test({ id }) {
   
-  // 몇 번째 질문인지 카운트하는 state
+  // 몇 번째 질문인지 카운트하
   const [currentNum, setCurrentNum] = useState(0);
 
   // 사용자가 선택한 선택지를 저장
@@ -23,7 +23,7 @@ export default function Test() {
 
   return (
     <div className='test-container'>
-      {currentNum >= questions.length ? <TestComplete userData={testResult}/> :
+      {currentNum >= questions.length ? <TestComplete id={id} userData={testResult}/> :
         <div className='test-box'>
           <p>{questions[currentNum].question}</p>
           <TestOption num={currentNum} data={questions[currentNum]} nextPage={nextPage}/>

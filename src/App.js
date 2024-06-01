@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Logo from './pages/Logo/Logo'
 import Login from './pages/Login/Login'
 import LoginSuccess from './pages/LoginSuccess/LoginSuccess'
@@ -10,14 +11,22 @@ import Main from './pages/Main/Main'
 import Detail from './pages/Detail/Detail'
 import Preparing from './pages/Preparing/Preparing'
 
-// Detail 구현해서 Main과 연결
-// TestComplete에서 userData를 input으로 API 통신을 하여 output을 Main으로 전달
-// 헤더 버튼과 페이지 연결, 검색 API
+// Header : 버튼 - 페이지 연결, 검색 API 통신하기
 
 export default function App() {
+
+  const [userId, setUserId] = useState('');
+
   return (
     <div className='app-container'>
-      <TestComplete/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Logo setUserId={setUserId}/>}/>
+          <Route path="/main" element={<Main id={userId}/>}/>
+          <Route path="/detail/:title" element={<Detail/>}/>
+          <Route path="/preparing" element={<Preparing/>}/>
+        </Routes>
+      </Router>
     </div>
   )
 }

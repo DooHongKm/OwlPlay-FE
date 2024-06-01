@@ -1,31 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './TestComplete.css'
 import Owl from '../../images/Owl.svg'
-import Main from '../Main/Main';
-import recommendEx from '../../datas/recommendEx.json'
 
-export default function TestComplete({ userData }) {
+export default function TestComplete({ id, userData }) {
+
+  // id와 성향 정보를 보내는 함수
+  const sendInfo = async (event) => {
+    event.preventDefault();   // 페이지 새로고침 방지
+    try {
+      // endpoint : /api/test
+      // request : {"id": '~~', "1": '~~', "2": '~~', ...}
+      // response : {}
+      const response = await fetch('/api/recommend', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+      // const data = await response.json();   // 실제 실행용
+    } catch (error) {
+      console.error('login error:', error);
+    }
+  };
 
   // 2초 후 메인 페이지로 이동
-  const [showComplete, setShowComplete] = useState(true);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowComplete(false);
+      navigate('/main')
     }, 2000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [navigate]);
 
   return (
     <div className='switch-container'>
-      {showComplete ? 
-        <div className='testcomplete-container'>
-          <div className='testcomplete-box'>
-            <img src={Owl} alt='Owl'/>
-            <p>성향 조사를 완료하여<br/>메인 추천 페이지로 이동합니다</p>
-          </div>
+      <div className='testcomplete-container'>
+        <div className='testcomplete-box'>
+          <img src={Owl} alt='Owl'/>
+          <p>성향 조사를 완료하여<br/>메인 추천 페이지로 이동합니다</p>
         </div>
-      : <Main data={recommendEx}/>}
+      </div>
     </div>
   )
 }

@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Signup.css'
 import Login from '../Login/Login';
 import SignupSuccess from '../SignupSuccess/SignupSuccess';
 
-export default function Signup() {
+export default function Signup({ setUserId }) {
 
   // 전달할 회원가입 관련 정보
   const [id, setId] = useState('');
@@ -24,6 +24,7 @@ export default function Signup() {
   // 회원가입 성공 -> 회원가입 성공 페이지로 이동
   const [signupSuccess, setSignupSuccess] = useState(false);
 
+  // 회원가입 정보를 보내고 P/F를 받아오는 함수
   const sendSignupInfo = async (event) => {
     event.preventDefault();   // 페이지 새로고침 방지
     try {
@@ -59,9 +60,15 @@ export default function Signup() {
     }
   };
 
+  useEffect(() => {
+    if (signupSuccess) {
+      setUserId(id);
+    }
+  }, [id, setUserId, signupSuccess])
+
   return (
     <div className='switch-container'>
-      {loginRequest ? <Login/> : (signupSuccess ? <SignupSuccess/> :
+      {loginRequest ? <Login/> : (signupSuccess ? <SignupSuccess id={id}/> :
         <div className='signup-container'>
           <form onSubmit={sendSignupInfo}>
             <div className='signup-box'>

@@ -4,7 +4,7 @@ import MovieCard from '../../components/MovieCard/MovieCard'
 
 export default function RecommendList({ movie10 }) {
 
-  // 해당 추천의 몇 번째 페이지인지 카운트하는 state
+  // 해당 추천의 몇 번째 페이지인지 카운트
   const [currentNum, setCurrentNum] = useState(0);
 
   // currentNum을 1 증가/감소시키는 함수

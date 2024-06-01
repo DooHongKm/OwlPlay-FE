@@ -2,6 +2,9 @@ import React from 'react'
 import './Header.css'
 import OwlLogo from '../../images/OwlLogo.svg'
 
+// 각 버튼을 해당 페이지로 연결
+// 검색 API 통신 구현
+
 export default function Header() {
   return (
     <div className='header-container'>
