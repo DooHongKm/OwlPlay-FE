@@ -6,8 +6,7 @@ import Owl from '../../images/Owl.svg'
 export default function TestComplete({ id, userData }) {
 
   // id와 성향 정보를 보내는 함수
-  const sendInfo = async (event) => {
-    event.preventDefault();   // 페이지 새로고침 방지
+  const sendInfo = async () => {
     try {
       // endpoint : /api/test
       // request : {"id": '~~', "1": '~~', "2": '~~', ...}

@@ -7,7 +7,6 @@ import Header from '../../features/Header/Header'
 export default function Preparing() {
 
   return (
-    <div className='switch-container'>
       <div className='preparing-container'>
         <Header/>
         <div className='preparing-body'>
@@ -17,6 +16,5 @@ export default function Preparing() {
           </div>
         </div>
       </div>
-    </div>
   )
 }

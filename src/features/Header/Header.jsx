@@ -54,26 +54,24 @@ export default function Header() {
   }, [searchSuccess]);
 
   return (
-    <div className='switch-container'>      
-      <div className='header-container'>
-        <img src={OwlLogo} alt='OwlLogo'/>
-        <button onClick={goMain}>Home</button>
-        <button onClick={goPreparing}>Movie</button>
-        <button onClick={goPreparing}>Drama</button>
-        <button onClick={goPreparing}>Entertainment</button>
-        <button onClick={goPreparing}>Animation</button>
-        <div className='empty-space'/>
-        <div className='search-box'>
-          <input
-            type='text'
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <button onClick={search}>⌕</button>
-        </div>
-        <button onClick={goPreparing}>내 정보</button>
+    <div className='header-container'>
+      <img src={OwlLogo} alt='OwlLogo'/>
+      <button onClick={goMain}>Home</button>
+      <button onClick={goPreparing}>Movie</button>
+      <button onClick={goPreparing}>Drama</button>
+      <button onClick={goPreparing}>Entertainment</button>
+      <button onClick={goPreparing}>Animation</button>
+      <div className='empty-space'/>
+      <div className='search-box'>
+        <input
+          type='text'
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={search}>⌕</button>
       </div>
+      <button onClick={goPreparing}>내 정보</button>
     </div>
   )
 }
