@@ -17,13 +17,17 @@ export default function TestComplete({ id, userData }) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userData),
+        body: JSON.stringify(id, userData),
       });
       // const data = await response.json();   // 실제 실행용
     } catch (error) {
       console.error('login error:', error);
     }
   };
+
+  useEffect(() => {
+    sendInfo();
+  }, []);
 
   // 2초 후 메인 페이지로 이동
   const navigate = useNavigate();
