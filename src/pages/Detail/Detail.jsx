@@ -5,6 +5,7 @@ import Header from '../../features/Header/Header'
 import data from '../../datas/detailEx.json'
 
 // 페이지 주소에서 영화 제목을 가져온 후, API 통신을 통해 정보를 받아와 표시하기
+// 해당 영화의 포스터로 백그라운드 설정 추가
 
 export default function Detail() {
 

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './TestComplete.css'
 import Owl from '../../images/Owl.svg'
 
+// state를 하나 만들어서 api 반환이 오면 페이지를 넘기도록 수정해야 함
+
 export default function TestComplete({ id, userData }) {
 
   // id와 성향 정보를 보내는 함수
