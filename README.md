@@ -14,3 +14,6 @@
 <img src=https://github.com/DooHongKm/OwlPlay-FE/assets/127850414/ff64b16e-96a3-4e3c-b5db-a989fdddc9bd width=720 height=340>
 <h2>Detail Page</h2>
 <img src=https://github.com/DooHongKm/OwlPlay-FE/assets/127850414/c5a1fc05-f4c7-4ab5-b789-537753b19188 width=720 height=340>
+<h2>Information Page</h2>
+<img src=https://github.com/DooHongKm/OwlPlay_FE/assets/127850414/cbf85507-4bf8-4c5b-b13e-a69a0e0e15b1 width=720 height=340>
+
