@@ -1,5 +1,6 @@
 <h1>Owl-Play</h1>
-사용자의 기호에 맞는 영화를 추천하고, 해당 영화의 OTT 서비스 정보를 제공하는 웹 서비스
+사용자의 기호에 맞는 영화를 추천하고, 해당 영화의 OTT 서비스 정보를 제공하는 웹 서비스<br>
+현재 백엔드 개발자가 추천 알고리즘 개발 진행 중인 관계로 임시 데이터를 이용하여 화면을 출력했습니다.
 <br><br>
 <h2>Logo Page</h2>
 <img src=https://github.com/DooHongKm/OwlPlay-FE/assets/127850414/83136b71-b67c-47bf-a7d1-60a826eca14b width=720 height=340>
