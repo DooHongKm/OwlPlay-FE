@@ -7,10 +7,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setId } from '../redux/id';
 
 // import assets
-import OwlLogo from '../assets/images/OwlLogo.svg'
+import OwlLogo from '../assets/images/OwlLogo.svg';
 
 // import style sheets
-import '../styles/pages/LoginPage.css'
+import '../styles/pages/LoginPage.css';
 
 // login page component
 const LoginPage = () => {
