@@ -1,0 +1,102 @@
+.detail-body {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-box {
+  position: relative;
+  width: 1350px;
+  height: 100%;
+  background-image: url('../../images/Poster.png');
+  background-size: cover;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.detail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+
+.detail-title {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  display: flex;
+}
+
+.detail-title > p:first-child {
+  font-size: 50px;
+  letter-spacing: 3px;
+  margin-right: 25px;
+}
+
+.detail-title > p:not(:first-child) {
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
+  margin-top: 22px;
+  color: white;
+  background-color: rgb(60, 60, 60);
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.detail-info {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.detail-info > p {
+  margin-right: 25px;
+}
+
+.detail-box > p {
+  position: relative;
+  width: 360px;
+  text-align: justify;
+  font-weight: lighter;
+  color: rgb(200, 200, 200);
+  margin-bottom: 30px;
+}
+
+.detail-link {
+  position: relative;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.detail-link > button {
+  width: 60px;
+  height: 22px;
+  padding: 0;
+  font-size: 12px;
+  margin-left: 20px;
+  margin-top: 2px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.detail-link > button:hover {
+  background-color: rgb(90, 90, 90);
+}

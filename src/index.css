@@ -1,35 +1,31 @@
 @font-face {
-  font-family: "GmarketMedium";
-  src: url('./fonts/GmarketMedium.TTF') format('truetype');
+  font-family: 'kDotum';
+  src: url('./fonts/KoPubWorld Dotum Light.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: "Batang";
-  src: url('./fonts/Batang.TTF') format('truetype');
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'kDotum';
   background-color: black;
 }
 
-p {
-  margin: 0
-}
-
-button {
+button:hover {
   cursor: pointer;
 }
 
-.app-container {
-  width: 100%;
-  height: 908px;
-}
-
-.switch-container {
+#root {
   width: 100%;
   height: 100%;
 }
 
-.empty-space {
+.app-container {
   width: 100%;
+  height: 100%;
 }

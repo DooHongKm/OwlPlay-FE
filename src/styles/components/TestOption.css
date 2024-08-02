@@ -1,0 +1,47 @@
+.testoption4-container {
+  width: 1440px;
+  height: 540px;
+  padding: 80px;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.testoption4-container > .optioncard-container {
+  margin-bottom: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.testoption6-container {
+  width: 1440px;
+  padding: 80px;
+  padding-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.testoption6-container > .optioncard-container {
+  margin-bottom: 80px;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.testoption8-container {
+  width: 1440px;
+  padding: 80px;
+  padding-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.testoption8-container > .optioncard-container {
+  margin-bottom: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

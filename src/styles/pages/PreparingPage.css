@@ -1,0 +1,38 @@
+.preparing-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.preparing-body {
+  width: 100%;
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.preparing-box {
+  width: 720px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.preparing-box > img {
+  width: 100px;
+  height: 100px;
+}
+
+.preparing-box > p {
+  height: 100px;
+  padding-left: 30px;
+  padding-top: 25px;
+  margin: 0;
+  box-sizing: border-box;
+  color: white;
+  font-size: 50px;
+  line-height: 45px;
+}
