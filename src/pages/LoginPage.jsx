@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // import redux
-import { useSelector, useDispatch } from 'react-redux';
-import { setId } from '../redux/id';
+import { useDispatch } from 'react-redux';
+import { setId as setReduxId } from '../redux/id';
 
 // import assets
 import OwlLogo from '../assets/images/OwlLogo.svg';
@@ -59,7 +59,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (loginSuccess) {
-      dispatch(setId(id));
+      dispatch(setReduxId(id));
       navigate('/main');
       setLoginSuccess(false);
     }
