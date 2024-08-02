@@ -4,22 +4,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
 }
 
-.login-box {
-  width: 720px;
-  height: 600px;
+.login-inner-container {
+  width: 600px;
+  height: 500px;
   border: none;
   display: flex;
   flex-direction: column;
-  border: none;
-  padding-top: 70px;
 }
 
 .login-logo {
   width: 100%;
   height: 80px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
 }
@@ -29,14 +27,9 @@
   height: 80px;
 }
 
-.login-box span {
-  width: 100%;
-  height: 80px;
-}
-
 .login-input {
   width: 100%;
-  height: 120px;
+  height: 110px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,36 +39,27 @@
   width: 100%;
   height: 50px;
   border-radius: 5px;
-  color: rgb(90, 90, 90);
+  color: rgb(60, 60, 60);
   padding-left: 15px;
   padding-right: 15px;
+  margin-bottom: 7px;
   border: none;
-  box-sizing: border-box;
-  font-size: 18px;
+  font-size: 20px;
 }
 
-.login-input-text {
+.login-input > p {
   width: 100%;
-  height: 50px;
+  height: 30px;
   border: none;
-  color: rgb(180, 180, 180, 0.7);
-  margin: 0;
-  padding-top: 5px;
+}
+
+.input-text {
   visibility: hidden;
 }
 
-.login-input-text-error {
-  width: 100%;
-  height: 50px;
-  border: none;
+.input-error {
   color: rgb(180, 180, 180, 0.7);
-  margin: 0;
-  padding-top: 5px;
-  visibility: visible;
-}
-
-.pw-error {
-  visibility: visible;
+  font-size: 19px;
 }
 
 .login-button {
@@ -85,15 +69,13 @@
 }
 
 .login-button > button {
-  width: 300px;
+  width: 250px;
   height: 60px;
   border: none;
   border-radius: 10px;
-  font-family: 'Batang';
   font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 5px;
-  padding-left: 15px;
+  letter-spacing: 3px;
+  padding-left: 10px;
   color: white;
   background-color: rgb(140, 80, 80);
 }

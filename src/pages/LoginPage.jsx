@@ -1,32 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import './Login.css'
-import OwlLogo from '../../images/OwlLogo.svg'
-import Signup from '../Signup/Signup';
-import LoginSuccess from '../LoginSuccess/LoginSuccess';
+// import react
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function LoginPage({ setUserId }) {
+// import redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setId } from '../redux/id';
 
-  // 전달할 id, pw 정보
+// import assets
+import OwlLogo from '../assets/images/OwlLogo.svg'
+
+// import style sheets
+import '../styles/pages/LoginPage.css'
+
+// login page component
+const LoginPage = () => {
+
+  // redux state
+  const dispatch = useDispatch();
+
+  // local state
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
-
-  // id 오류, pw 오류 인식
   const [idError, setIdError] = useState(false);
   const [pwError, setPwError] = useState(false);
-
-  // 회원가입 버튼 -> 회원가입 페이지로 이동
+  const [loginSuccess, setLoginSuccess] = useState(false);
   const [signupRequest, setSignupRequest] = useState(false);
 
-  // 로그인 성공 -> 로그인 성공 페이지로 이동
-  const [loginSuccess, setLoginSuccess] = useState(false);
-
-  // 로그인 정보를 보내고 P/F를 받아오는 함수
-  const sendLoginInfo = async (event) => {
-    event.preventDefault();   // 페이지 새로고침 방지
+  // login button click event
+  const sendLoginInfo = async (e) => {
+    e.preventDefault();
     try {
       // endpoint : /api/login
-      // request : {"id": '~~~', "pw": '~~~'}
-      // response : {"message": '~~~'}
+      // request : {"id": string, "pw": string}
+      // response : {"message": string}
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
@@ -34,8 +40,7 @@ export default function LoginPage({ setUserId }) {
         },
         body: JSON.stringify({ id, pw }),
       });
-      // const data = await response.json();   // 실제 실행용
-      const data = {"message": 'pass'};   // 테스트용
+      const data = {"message": 'pass'};  // const data = await response.json(); 
       if (data.message === 'pass') {
         setLoginSuccess(true);
       } else if (data.message === 'id-error') {
@@ -50,48 +55,55 @@ export default function LoginPage({ setUserId }) {
     }
   };
 
+  // navigate to main page or signup page
+  const navigate = useNavigate();
   useEffect(() => {
     if (loginSuccess) {
-      setUserId(id);
+      dispatch(setId(id));
+      navigate('/main');
+      setLoginSuccess(false);
     }
-  }, [id, setUserId, loginSuccess])
+  }, [navigate, loginSuccess])
+  useEffect(() => {
+    if (signupRequest) {
+      navigate('/signup');
+      setSignupRequest(false);
+    }
+  }, [navigate, signupRequest])
 
   return (
-    <div className='switch-container'>
-      {signupRequest ? <Signup setUserId={setUserId}/> : (loginSuccess ? <LoginSuccess/> :
-        <div className='login-container'>
-          <div className='login-box'>
-            <div className='login-logo'>
-              <img src={OwlLogo} alt='OwlLogo'/>
-            </div>
-            <span/>
-            <form onSubmit={sendLoginInfo}>
-              <div className='login-input'>
-                <input 
-                  type='text'
-                  placeholder='ID'
-                  value={id}
-                  onChange={(e) => setId(e.target.value)}
-                />
-                <p className={idError ? 'login-input-text-error' : 'login-input-text'}>존재하지 않는 아이디입니다.</p>
-              </div>
-              <div className='login-input'>
-                <input 
-                  type='password'
-                  placeholder='PW'
-                  value={pw}
-                  onChange={(e) => setPw(e.target.value)}
-                />
-                <p className={pwError ? 'login-input-text-error' : 'login-input-text'}>잘못된 비밀번호입니다.</p>
-              </div>
-              <div className='login-button'>
-                <button type='submit'>로그인</button>
-                <button onClick={() => setSignupRequest(true)}>회원가입</button>
-              </div>
-            </form>
-          </div>
+    <div className='login-container'>
+      <div className='login-inner-container'>
+        <div className='login-logo'>
+          <img src={OwlLogo} alt='OwlLogo'/>
         </div>
-      )}
+        <form onSubmit={sendLoginInfo}>
+          <div className='login-input'>
+            <input 
+              type='text'
+              placeholder='ID'
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
+            <p className={idError ? 'input-error' : 'input-text'}>존재하지 않는 아이디입니다.</p>
+          </div>
+          <div className='login-input'>
+            <input 
+              type='password'
+              placeholder='PW'
+              value={pw}
+              onChange={(e) => setPw(e.target.value)}
+            />
+            <p className={pwError ? 'input-error' : 'input-text'}>잘못된 비밀번호입니다.</p>
+          </div>
+          <div className='login-button'>
+            <button type='submit'>로그인</button>
+            <button onClick={() => setSignupRequest(true)}>회원가입</button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
+
+export default LoginPage;
