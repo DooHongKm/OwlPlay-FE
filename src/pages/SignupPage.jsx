@@ -1,11 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import './Signup.css'
-import Login from '../Login/Login';
-import SignupSuccess from '../SignupSuccess/SignupSuccess';
+// import react
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function SignupPage({ setUserId }) {
+// import redux
+import { useDispatch } from 'react-redux';
+import { setId as setReduxId } from '../redux/id';
 
-  // 전달할 회원가입 관련 정보
+// import style sheets
+import '../styles/pages/SignupPage.css';
+
+// 중복 확인 구현 필요
+
+
+// signup page component
+const SignupPage = () => {
+
+  // redux
+  const dispatch = useDispatch();
+
+  // local state (enter)
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [pw2, setPw2] = useState('');
@@ -13,24 +26,32 @@ export default function SignupPage({ setUserId }) {
   const [contact, setContact] = useState('');
   const [birthday, setBirthday] = useState('');
 
-  // id 및 pw 오류 인식
+  // local state (determine)
   const [idError, setIdError] = useState(false);
   const [pwError, setPwError] = useState(false);
   const [pw2Error, setPw2Error] = useState(false); 
 
-  // 이전 버튼 -> 로그인 페이지로 이동
+  // local state (navigate)
+  const [signupSuccess, setSignupSuccess] = useState(false);
   const [loginRequest, setLoginRequest] = useState(false);
 
-  // 회원가입 성공 -> 회원가입 성공 페이지로 이동
-  const [signupSuccess, setSignupSuccess] = useState(false);
+  // check button click event
+  const clickCheck = async () => {
+    try {
 
-  // 회원가입 정보를 보내고 P/F를 받아오는 함수
-  const sendSignupInfo = async (event) => {
-    event.preventDefault();   // 페이지 새로고침 방지
+    } catch {
+
+    }
+  }
+
+  // complete button click event
+  const sendSignupInfo = async (e) => {
+    e.preventDefault();
     try {
       // API 엔드포인트 : /api/signup
-      // request : {"id": '~~', "pw": '~~', "pw2": '~~', "name": '~~', "contact": '~~', "birthday": '~~'}
-      // response : {"message": '~~~'}
+      // request : {"id": string, "pw": string, "pw2": string,
+      //            "name": string, "contact": string, "birthday": string}
+      // response : {"message": string}
       const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
@@ -38,8 +59,7 @@ export default function SignupPage({ setUserId }) {
         },
         body: JSON.stringify({ id, pw, pw2, name, contact, birthday }),
       });
-      // const data = await response.json();   // 실제 실행용
-      const data = {"message": 'pass'};   // 테스트용
+      const data = {"message": 'id-error'};  // const data = await response.json();
       if (data.message === 'pass') {
         setSignupSuccess(true);
       } else if (data.message === 'id-error') {
@@ -60,93 +80,101 @@ export default function SignupPage({ setUserId }) {
     }
   };
 
+  // navigate to test page or login page
+  const navigate = useNavigate();
   useEffect(() => {
     if (signupSuccess) {
-      setUserId(id);
+      dispatch(setReduxId(id));
+      navigate('/test');
+      setSignupSuccess(false);
     }
-  }, [id, setUserId, signupSuccess])
+  }, [navigate, signupSuccess])
+  useEffect(() => {
+    if (loginRequest) {
+      navigate('/login');
+      setLoginRequest(false);
+    }
+  }, [navigate, loginRequest])
 
   return (
-    <div className='switch-container'>
-      {loginRequest ? <Login/> : (signupSuccess ? <SignupSuccess id={id}/> :
-        <div className='signup-container'>
-          <form onSubmit={sendSignupInfo}>
-            <div className='signup-box'>
-              <p>회원가입</p>
-              <div className='signup-id'>
-                <div className='signup-text'>
-                  <p>아이디</p>
-                  <p className={idError ? 'signup-input-text-error' : 'signup-input-text'}>사용할 수 없는 아이디입니다.</p>
-                </div>
-                <div className='signup-id-input'>
-                  <input 
-                    type='text'
-                    placeholder='아이디 입력 (영문, 숫자 포함 6~20자)'
-                    value={id}
-                    onChange={(e) => setId(e.target.value)}
-                  />
-                  <button type='button'>중복확인</button>
-                </div>
-              </div>
-              <div className='signup-pw'>
-                <div className='signup-text'>
-                  <p>비밀번호</p>
-                  <p className={pwError ? 'signup-input-text-error' : 'signup-input-text'}>올바르지 않은 비밀번호입니다.</p>
-                </div>
-                <input 
-                  type='password'
-                  placeholder='비밀번호 입력 (대문자, 숫자, 특수문자 포함 8~20자)'
-                  value={pw}
-                  onChange={(e) => setPw(e.target.value)}
-                />
-              </div>
-              <div className='signup-pw'>
-                <div className='signup-text'>
-                  <p>비밀번호 확인</p>
-                  <p className={pw2Error ? 'signup-input-text-error' : 'signup-input-text'}>비밀번호가 일치하지 않습니다.</p>
-                </div>
-                <input 
-                  type='password'
-                  placeholder='비밀번호 재입력'
-                  value={pw2}
-                  onChange={(e) => setPw2(e.target.value)}
-                />
-              </div>  
-              <div className='signup-etc'>
-                <p>이름</p>
-                <input 
-                    type='text'
-                    placeholder='이름 입력'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-              </div>
-              <div className='signup-etc'>
-                <p>전화번호</p>
-                <input 
-                    type='text'
-                    placeholder="전화번호 입력 ('-' 제외 숫자 11자리)"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
-                  />
-              </div>
-              <div className='signup-etc'>
-                <p>생년월일</p>
-                <input 
-                    type='text'
-                    placeholder="생년월일 입력 ('.'제외 숫자 8자리)"
-                    value={birthday}
-                    onChange={(e) => setBirthday(e.target.value)}
-                  />
-              </div>
-              <div className='signup-button'>
-                <button onClick={() => setLoginRequest(true)}>&lt; 이전</button>
-                <button type='submit'>다음 &gt;</button>
-              </div>
+    <div className='signup-container'>
+      <form onSubmit={sendSignupInfo}>
+        <div className='signup-inner-container'>
+          <p>회원가입</p>
+          <div className='signup-id'>
+            <div className='signup-text'>
+              <p>아이디</p>
+              <p className={idError ? 'signup-input-text-error' : 'signup-input-text'}>사용할 수 없는 아이디입니다.</p>
             </div>
-          </form>
+            <div className='signup-id-input'>
+              <input 
+                type='text'
+                placeholder='아이디 입력 (영문, 숫자 포함 6~20자)'
+                value={id}
+                onChange={(e) => setId(e.target.value)}
+              />
+              <button onClick={clickCheck}>중복확인</button>
+            </div>
+          </div>
+          <div className='signup-pw'>
+            <div className='signup-text'>
+              <p>비밀번호</p>
+              <p className={pwError ? 'signup-input-text-error' : 'signup-input-text'}>올바르지 않은 비밀번호입니다.</p>
+            </div>
+            <input 
+              type='password'
+              placeholder='비밀번호 입력 (대문자, 숫자, 특수문자 포함 8~20자)'
+              value={pw}
+              onChange={(e) => setPw(e.target.value)}
+            />
+          </div>
+          <div className='signup-pw'>
+            <div className='signup-text'>
+              <p>비밀번호 확인</p>
+              <p className={pw2Error ? 'signup-input-text-error' : 'signup-input-text'}>비밀번호가 일치하지 않습니다.</p>
+            </div>
+            <input 
+              type='password'
+              placeholder='비밀번호 재입력'
+              value={pw2}
+              onChange={(e) => setPw2(e.target.value)}
+            />
+          </div>  
+          <div className='signup-etc'>
+            <p>이름</p>
+            <input 
+                type='text'
+                placeholder='이름 입력'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+          </div>
+          <div className='signup-etc'>
+            <p>전화번호</p>
+            <input 
+                type='text'
+                placeholder="전화번호 입력 ('-' 제외 숫자 11자리)"
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+              />
+          </div>
+          <div className='signup-etc'>
+            <p>생년월일</p>
+            <input 
+                type='text'
+                placeholder="생년월일 입력 ('.'제외 숫자 8자리)"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+              />
+          </div>
+          <div className='signup-button'>
+            <button onClick={() => setLoginRequest(true)}>&lt; 이전</button>
+            <button type='submit'>완료 &gt;</button>
+          </div>
         </div>
-      )}
+      </form>
     </div>
   )
 }
+
+export default SignupPage;
