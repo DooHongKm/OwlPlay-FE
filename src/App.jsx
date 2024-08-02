@@ -21,11 +21,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LogoPage/>}/>
           <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/signup" element={<SignupPage/>}/>
+          {/* <Route path="/signup" element={<SignupPage/>}/>
           <Route path="/test" element={<TestPage/>}/>
           <Route path="/main" element={<MainPage/>}/>
           <Route path="/detail" element={<DetailPage/>}/>
-          <Route path="/preparing" element={<PreparingPage/>}/>
+          <Route path="/preparing" element={<PreparingPage/>}/> */}
         </Routes>
       </Router>
     </div>
