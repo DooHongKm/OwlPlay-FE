@@ -18,7 +18,7 @@ const LogoPage = () => {
       navigate('/login');
     }, 3000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [navigate]);
 
   // return
   return (
