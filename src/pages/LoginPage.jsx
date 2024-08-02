@@ -15,7 +15,7 @@ import '../styles/pages/LoginPage.css';
 // login page component
 const LoginPage = () => {
 
-  // redux state
+  // redux
   const dispatch = useDispatch();
 
   // local state
