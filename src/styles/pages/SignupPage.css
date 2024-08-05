@@ -59,7 +59,15 @@ input {
   color: rgb(140, 80, 80);
   text-align: center;
   margin-left: 20px;
-  margin-top: 3px;
+  margin-top: 2px;
+}
+
+.signup-input-text-id {
+  font-size: 14px;
+  color: rgb(80, 85, 140);
+  text-align: center;
+  margin-left: 20px;
+  margin-top: 2px;
 }
 
 .signup-id {
@@ -131,4 +139,12 @@ input {
   padding-left: 15px;
   color: white;
   background-color: rgb(140, 80, 80);
+}
+
+.visible-button {
+  visibility: visible;
+}
+
+.invisible-button {
+  visibility: hidden;
 }

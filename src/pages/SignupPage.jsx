@@ -9,9 +9,6 @@ import { setId as setReduxId } from '../redux/id';
 // import style sheets
 import '../styles/pages/SignupPage.css';
 
-// 중복 확인 구현 필요
-
-
 // signup page component
 const SignupPage = () => {
 
@@ -32,16 +29,35 @@ const SignupPage = () => {
   const [pw2Error, setPw2Error] = useState(false); 
 
   // local state (navigate)
+  const [idCheck, setIdCheck] = useState(false);
   const [signupSuccess, setSignupSuccess] = useState(false);
   const [loginRequest, setLoginRequest] = useState(false);
 
-  // check button click event
-  const clickCheck = async () => {
+  // id check button click event
+  const clickIdCheck = async (e) => {
+    e.preventDefault();
     try {
-
-    } catch {
-
-    }
+      // API 엔드포인트 : /api/idcheck
+      // request : {"id": string}
+      // response : {"message": string}
+      const response = await fetch('/api/idcheck', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }),
+      });
+      const data = {"message": 'pass'};  // const data = await response.json();
+      if (data.message === 'pass') {
+        setIdError(false);
+      } else if (data.message == 'id-error') {
+        setIdError(true);
+      }
+    } catch (error) {
+      console.error('idcheck error:', error);
+    } finally {
+      setIdCheck(true);
+    }   
   }
 
   // complete button click event
@@ -59,19 +75,13 @@ const SignupPage = () => {
         },
         body: JSON.stringify({ id, pw, pw2, name, contact, birthday }),
       });
-      const data = {"message": 'id-error'};  // const data = await response.json();
+      const data = {"message": 'pass'};  // const data = await response.json();
       if (data.message === 'pass') {
         setSignupSuccess(true);
-      } else if (data.message === 'id-error') {
-        setIdError(true);
-        setPwError(false);
-        setPw2Error(false);
       } else if (data.message === 'pw-error') {
-        setIdError(false);
         setPwError(true);
         setPw2Error(false);
       } else if (data.message === 'pw2-error') {
-        setIdError(false);
         setPwError(false);
         setPw2Error(true);
       }
@@ -104,7 +114,13 @@ const SignupPage = () => {
           <div className='signup-id'>
             <div className='signup-text'>
               <p>아이디</p>
-              <p className={idError ? 'signup-input-text-error' : 'signup-input-text'}>사용할 수 없는 아이디입니다.</p>
+              {idError ? 
+                <p className='signup-input-text-error'>사용할 수 없는 아이디입니다.</p> :
+                (idCheck ? 
+                  <p className='signup-input-text-id'>사용 가능한 아이디입니다.</p> :
+                  <p className='signup-input-text'></p>
+                )
+              }
             </div>
             <div className='signup-id-input'>
               <input 
@@ -113,7 +129,7 @@ const SignupPage = () => {
                 value={id}
                 onChange={(e) => setId(e.target.value)}
               />
-              <button onClick={clickCheck}>중복확인</button>
+              <button onClick={clickIdCheck}>중복확인</button>
             </div>
           </div>
           <div className='signup-pw'>
@@ -169,7 +185,10 @@ const SignupPage = () => {
           </div>
           <div className='signup-button'>
             <button onClick={() => setLoginRequest(true)}>&lt; 이전</button>
-            <button type='submit'>완료 &gt;</button>
+            <button
+              type='submit'
+              className={(idCheck && !idError) ? 'visible-button' : 'invisible-button'}
+            >완료 &gt;</button>
           </div>
         </div>
       </form>
