@@ -1,11 +1,17 @@
-import React from 'react'
-import './TestOption.css'
-import OptionCard from '../../components/OptionCard/OptionCard'
+// import react
+import React from 'react';
 
-export default function TestOption({ num, data, nextPage }) {
+// import components
+import OptionCard from './OptionCard';
 
-  // 선택지 개수를 반환하는 함수
-  function countOptions(data) {
+// import style sheets
+import '../styles/components/TestOption.css';
+
+// test option component
+const TestOption = ({ data }) => {
+
+  // count options
+  const countOptions = (data) => {
     let count = 0;
     for (let key in data) {
       if (key.startsWith('option') && data[key] !== 'none') {
@@ -15,37 +21,40 @@ export default function TestOption({ num, data, nextPage }) {
     return count;
   }
 
+  // return
   return (
     <div className='switch-container'>
       {countOptions(data) === 4 ?
         <div className='testoption4-container'>
-          <OptionCard num={num} info={data.option1} nextPage={nextPage}/>
-          <OptionCard num={num} info={data.option2} nextPage={nextPage}/>
-          <OptionCard num={num} info={data.option3} nextPage={nextPage}/>
-          <OptionCard num={num} info={data.option4} nextPage={nextPage}/>
+          <OptionCard info={data.option1}/>
+          <OptionCard info={data.option2}/>
+          <OptionCard info={data.option3}/>
+          <OptionCard info={data.option4}/>
         </div>:
         (countOptions(data) === 6 ?
           <div className='testoption6-container'>
-            <OptionCard num={num} info={data.option1} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option2} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option3} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option4} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option5} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option6} nextPage={nextPage}/>
+            <OptionCard info={data.option1}/>
+            <OptionCard info={data.option2}/>
+            <OptionCard info={data.option3}/>
+            <OptionCard info={data.option4}/>
+            <OptionCard info={data.option5}/>
+            <OptionCard info={data.option6}/>
           </div>:
           <div className='testoption8-container'>
-            <OptionCard num={num} info={data.option1} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option2} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option3} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option4} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option5} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option6} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option7} nextPage={nextPage}/>
-            <OptionCard num={num} info={data.option8} nextPage={nextPage}/>
+            <OptionCard info={data.option1}/>
+            <OptionCard info={data.option2}/>
+            <OptionCard info={data.option3}/>
+            <OptionCard info={data.option4}/>
+            <OptionCard info={data.option5}/>
+            <OptionCard info={data.option6}/>
+            <OptionCard info={data.option7}/>
+            <OptionCard info={data.option8}/>
           </div>
         )
       }
     </div>
-
   )
 }
+
+// export
+export default TestOption;
