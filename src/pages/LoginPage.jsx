@@ -63,7 +63,7 @@ const LoginPage = () => {
       navigate('/main');
       setLoginSuccess(false);
     }
-  }, [navigate, loginSuccess])
+  }, [navigate, dispatch, id, loginSuccess])
   useEffect(() => {
     if (signupRequest) {
       navigate('/signup');
