@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { setId as setReduxId } from '../redux/id';
 import { setId as setChoiceId } from '../redux/choices';
 
-
 // import assets
 import OwlLogo from '../assets/images/OwlLogo.svg';
 
