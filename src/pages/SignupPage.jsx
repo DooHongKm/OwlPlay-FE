@@ -50,7 +50,7 @@ const SignupPage = () => {
       const data = {"message": 'pass'};  // const data = await response.json();
       if (data.message === 'pass') {
         setIdError(false);
-      } else if (data.message == 'id-error') {
+      } else if (data.message === 'id-error') {
         setIdError(true);
       }
     } catch (error) {
@@ -98,7 +98,7 @@ const SignupPage = () => {
       navigate('/test');
       setSignupSuccess(false);
     }
-  }, [navigate, signupSuccess])
+  }, [navigate, dispatch, id, signupSuccess])
   useEffect(() => {
     if (loginRequest) {
       navigate('/login');
