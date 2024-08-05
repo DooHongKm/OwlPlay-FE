@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // init
 const initialState = {
   value: {
+    id: "",
     choice1: "",
     choice2: "",
     choice3: "",
@@ -17,6 +18,9 @@ export const choicesSlice = createSlice({
   name: "choices",
   initialState,
   reducers: {
+    setId: (state, action) => {
+      state.value.id = action.payload;
+    },
     setChoice1: (state, action) => {
       state.value.choice1 = action.payload;
     },
@@ -36,5 +40,5 @@ export const choicesSlice = createSlice({
 });
 
 // export
-export const { setChoice1, setChoice2, setChoice3, setChoice4, setChoice5 } = choicesSlice.actions;
+export const { setId, setChoice1, setChoice2, setChoice3, setChoice4, setChoice5 } = choicesSlice.actions;
 export default choicesSlice.reducer;
