@@ -1,9 +1,10 @@
 .detail-body {
-  width: 100vw;
-  height: 90vh;
+  width: 94vw;
+  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .detail-box {
@@ -15,7 +16,7 @@
   box-sizing: border-box;
   padding-top: 50px;
   padding-bottom: 20px;
-  padding-left: 100px;
+  padding-left: 7vw;
   padding-right: 30px;
   overflow: hidden;
 }
@@ -23,13 +24,14 @@
 .detail-overlay {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 3vw;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
   pointer-events: none;
   object-fit: cover;
   object-position: center;
+  overflow: hidden;
 }
 
 .detail-title {
