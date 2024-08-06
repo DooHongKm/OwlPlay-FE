@@ -1,60 +1,76 @@
-import React, { useState, useEffect } from 'react'
-import './Main.css'
-import Header from '../../features/Header/Header'
-import RecommendList from '../../features/RecommendList/RecommendList'
-import data from '../../datas/recommendEx.json'   // 테스트용
+// import react
+import React, { useState, useEffect } from 'react';
 
-export default function MainPage({ id }) {
+// import redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setRecs } from '../redux/recs';
 
-  // id 정보를 보내고 추천 리스트를 받아오는 함수
-  const [recommends, setRecommends] = useState([]);
-  const sendIdInfo = async (event) => {
-    try {
-      // endpoint : /api/recommend
-      // request : {"id": '~~~'}
-      // response : {"title": '~~', "first": '~~', ..., "tenth": '~~'}
-      const response = await fetch('/api/recommend', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id })
-      });
-      // const data = await response.json();   // 실제 실행용
-      setRecommends(data)
-    } catch (error) {
-      console.error('login error:', error);
-    }
-  };
+// import assets
+import data from '../assets/data/recommendEx.json';
 
+// import components
+import Header from '../components/Header';
+import RecommendList from '../components/RecommendList';
+
+// import style sheets
+import '../styles/pages/MainPage.css'
+
+// main page component
+const MainPage = () => {
+
+  // redux state
+  const id = useSelector((state) => (state.id.value));
+  const recList = useSelector((state) => (state.recs.value));
+  const dispatch = useDispatch();
+
+  // fetch recommend data
   useEffect(() => {
+    const sendIdInfo = async () => {
+      try {
+        // endpoint : /api/recommend
+        // request : {"id": string}
+        // response : {"title": string, "first": string, ..., "tenth": string}
+        const response = await fetch('/api/recommend', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id })
+        });
+        // const data = await response.json();
+        dispatch(setRecs(data)); 
+      } catch (error) {
+        console.error('recommend error:', error);
+      }
+    };
     sendIdInfo();
-  }, []);
+  }, [dispatch, id]);
 
+  // return
    return (
     <div className='main-container'>
       <Header/>
       <div className='main-body'>
-        {recommends.length === 0 ? null :
+        {recList.length === 0 ? null :
           <div className='main-box'>
             <div className='main-list'>
-              <p>{recommends[0].title}</p>
-              <RecommendList movie10={recommends[0]}/>
+              <p>{recList[0].title}</p>
+              <RecommendList movie10={recList[0]}/>
             </div>
             <hr/>
             <div className='main-list'>
-              <p>{recommends[1].title}</p>
-              <RecommendList movie10={recommends[1]}/>
+              <p>{recList[1].title}</p>
+              <RecommendList movie10={recList[1]}/>
             </div>
             <hr/>
             <div className='main-list'>
-              <p>{recommends[2].title}</p>
-              <RecommendList movie10={recommends[2]}/>
+              <p>{recList[2].title}</p>
+              <RecommendList movie10={recList[2]}/>
             </div>
             <hr/>
             <div className='main-list'>
-              <p>{recommends[3].title}</p>
-              <RecommendList movie10={recommends[3]}/>
+              <p>{recList[3].title}</p>
+              <RecommendList movie10={recList[3]}/>
             </div>
           </div>
         }
@@ -62,3 +78,6 @@ export default function MainPage({ id }) {
     </div>
   )
 }
+
+// export
+export default MainPage;

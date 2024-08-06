@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
-import './RecommendList.css'
-import MovieCard from '../../components/MovieCard/MovieCard'
+// import react
+import React, { useState } from 'react';
 
-export default function RecommendList({ movie10 }) {
+// import components
+import MovieCard from '../components/MovieCard';
 
-  // 해당 추천의 몇 번째 페이지인지 카운트
+// import style sheets
+import '../styles/components/RecommendList.css';
+
+// recommend list component
+const RecommendList = ({ movie10 }) => {
+
+  // local state
   const [currentNum, setCurrentNum] = useState(0);
 
-  // currentNum을 1 증가/감소시키는 함수
+  // increase or decrease page number
   const nextPage = () => {
     setCurrentNum((currentNum) => (currentNum > 1 ? currentNum : currentNum + 1));
   }
@@ -15,6 +21,7 @@ export default function RecommendList({ movie10 }) {
     setCurrentNum((currentNum) => (currentNum < 1 ? currentNum : currentNum - 1));
   }
 
+  // return
   return (
     <div className='switch-container'>
       {currentNum < 1 ?
@@ -48,3 +55,6 @@ export default function RecommendList({ movie10 }) {
     </div>
   )
 }
+
+// export
+export default RecommendList;
