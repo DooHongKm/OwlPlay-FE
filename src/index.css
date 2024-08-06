@@ -16,6 +16,10 @@ body {
   background-color: black;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 button:hover {
   cursor: pointer;
 }
