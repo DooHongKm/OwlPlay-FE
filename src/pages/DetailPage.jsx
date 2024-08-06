@@ -32,28 +32,27 @@ const DetailPage = () => {
   const { height } = useWindowSize(); 
 
   // fetch movie data
-  const sendMovieTitle = async () => {
-    try {
-      // API 엔드포인트 : /api/detail
-      // request : {"title": string}
-      // response : {"title": string, "genre": string, "rating": string,
-      //             "age": number, "time": number, "script": string,
-      //             "OTT": string[], "OTTlink": string[]}
-      const response = await fetch('/api/detail', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ title }),
-      });
-      // const data = await response.json();
-      setMovieData(data);
-    } catch (error) {
-      console.error('login error:', error);
-    }
-  };
-
   useEffect(() => {
+    const sendMovieTitle = async () => {
+      try {
+        // API 엔드포인트 : /api/detail
+        // request : {"title": string}
+        // response : {"title": string, "genre": string, "rating": string,
+        //             "age": number, "time": number, "script": string,
+        //             "OTT": string[], "OTTlink": string[]}
+        const response = await fetch('/api/detail', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ title }),
+        });
+        // const data = await response.json();
+        setMovieData(data);
+      } catch (error) {
+        console.error('login error:', error);
+      }
+    };
     sendMovieTitle();
   }, [title]);
 
@@ -71,7 +70,7 @@ const DetailPage = () => {
       <div className='detail-body' style={{height:`${height-85}px`}}>
         {ottArray.length === 0 ? null : 
           <div className='detail-box'>
-            <img className='detail-overlay' src={movieData.posterlink}/>
+            <img className='detail-overlay' src={movieData.posterlink} alt='poster'/>
             <div className='detail-overlay'/>
             <div className='detail-title'>
               <p>{movieData.title}</p>

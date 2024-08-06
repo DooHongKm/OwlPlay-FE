@@ -23,7 +23,7 @@ const TestOption = ({ data }) => {
 
   // return
   return (
-    <div className='switch-container'>
+    <div className='switch2-container'>
       {countOptions(data) === 4 ?
         <div className='testoption4-container'>
           <OptionCard info={data.option1}/>
