@@ -9,6 +9,7 @@ import choicesReducer from "./choices";
 import choiceNumReducer from "./choiceNum";
 import recsReducer from "./recs";
 import infosReducer from "./infos";
+import titleReducer from "./title";
 
 // reducer(persist)
 const rootReducer = combineReducers({
@@ -17,12 +18,13 @@ const rootReducer = combineReducers({
   choiceNum: choiceNumReducer,
   recs: recsReducer,
   infos: infosReducer,
+  title: titleReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ['id', 'choices', 'choiceNum', 'recs', 'infos']
+  whitelist: ['id', 'choices', 'choiceNum', 'recs', 'infos', 'title']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
