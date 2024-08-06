@@ -1,11 +1,19 @@
-import React from 'react'
-import './Preparing.css'
-import Owl from '../../images/Owl.svg'
-import Header from '../../features/Header/Header'
+// import react
+import React from 'react';
 
+// import assets
+import Owl from '../assets/images/Owl.svg';
 
-export default function PreparingPage() {
+// import components
+import Header from '../components/Header';
 
+// import style sheets
+import '../styles/pages/PreparingPage.css';
+
+// preparing page component
+const PreparingPage = () => {
+
+  // return
   return (
       <div className='preparing-container'>
         <Header/>
@@ -18,3 +26,5 @@ export default function PreparingPage() {
       </div>
   )
 }
+
+export default PreparingPage;

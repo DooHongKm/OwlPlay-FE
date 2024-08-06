@@ -22,8 +22,8 @@
 }
 
 .preparing-box > img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .preparing-box > p {
@@ -34,5 +34,6 @@
   box-sizing: border-box;
   color: white;
   font-size: 50px;
-  line-height: 45px;
+  line-height: 35px;
+  letter-spacing: 5px;
 }
