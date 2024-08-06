@@ -7,11 +7,15 @@ import { useSelector } from 'react-redux';
 // import assets
 import data from '../assets/data/detailEx.json';
 
+// import hooks
+import useWindowSize from '../hooks/useWindowSize';
+
 // import components
 import Header from '../components/Header';
 
 // import style sheets
 import '../styles/pages/DetailPage.css';
+
 
 // detail page component
 const DetailPage = () => {
@@ -23,6 +27,9 @@ const DetailPage = () => {
   const [movieData, setMovieData] = useState({});
   const [ottArray, setOttArray] = useState([]);
   const [ottLinkArray, setOttLinkArray] = useState([]);
+
+  // local variable
+  const { height } = useWindowSize(); 
 
   // fetch movie data
   const sendMovieTitle = async () => {
@@ -61,7 +68,7 @@ const DetailPage = () => {
   return (
     <div className='detail-container'>
       <Header/>
-      <div className='detail-body'>
+      <div className='detail-body' style={{height:`${height-85}px`}}>
         {ottArray.length === 0 ? null : 
           <div className='detail-box'>
             <img className='detail-overlay' src={movieData.posterlink}/>
